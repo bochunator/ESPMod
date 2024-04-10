@@ -3,6 +3,7 @@ import path from 'node:path'
 import electron from 'vite-plugin-electron/simple'
 import react from '@vitejs/plugin-react'
 
+// MODE=electron npm run build
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [
@@ -23,4 +24,5 @@ export default defineConfig({
       renderer: {},
     }),
   ],
+  ...(process.env.MODE === 'electron' ? {} : { base: '/ESPMod/' })
 })
